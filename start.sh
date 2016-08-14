@@ -1,15 +1,20 @@
 #!/bin/bash
-# Lazy Git v0.1
+# Lazy Git v0.2
+# Made by Dr. Waldijk
 # Just press a few buttons to get your git don and pushed to Github.
-# Written by Dr. Waldijk
 # Read the README.md for more info.
 # -----------------------------------------------------------------------------------
+LAZYGITDIR=$(pwd)
 while :
 do
     clear
     echo "Lazy Git v0.1"
     echo "   1. Status   |      2. Add      |      3. Commit      |  4. Push"
     echo "   5. Init     |   6. Add remote"
+    echo ""
+    echo "Q. Quit"
+    echo ""
+    echo "Working directory: $LAZYGITDIR"
     echo ""
     read -p "Enter option: " -s -n1 LAZYGIT
     case "$LAZYGIT" in
@@ -52,7 +57,7 @@ do
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
-        0)
+        [qQ])
             clear
             echo "Lazy Git v0.1"
             echo "Bye!"
