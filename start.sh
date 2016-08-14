@@ -8,7 +8,7 @@ LAZYGITDIR=$(pwd)
 while :
 do
     clear
-    echo "Lazy Git v0.1"
+    echo "Lazy Git v0.2"
     echo "   1. Status   |      2. Add      |      3. Commit      |  4. Push"
     echo "   5. Init     |   6. Add remote"
     echo ""
@@ -59,7 +59,7 @@ do
         ;;
         [qQ])
             clear
-            echo "Lazy Git v0.1"
+            echo "Lazy Git v0.2"
             echo "Bye!"
             break
         ;;
