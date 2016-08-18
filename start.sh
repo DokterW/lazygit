@@ -1,20 +1,24 @@
 #!/bin/bash
 # Lazy Git v0.3
 # Made by Dr. Waldijk
-# Just press a few buttons to get your git don and pushed to Github.
+# Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
+# By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
-LAZYGITDIR=$(pwd)
+# Add the root path of your dev directory. Uncomment to use it, don't forget to uncomment further down.
+# LAZYGITDEVDIR=$(echo "")
 while :
 do
+    LAZYGITDIR=$(pwd)
     clear
     echo "Lazy Git v0.3"
-    echo "   1. Add      |   2. Commit   |   3. Commit (-a)   |  4. Push"
-    echo "   5. Status   |   6. Init     |   7. Add remote"
+    echo "1. Add     |  2. Commit  |  3. Commit (-a)  |  4. Push"
+    echo "5. Status  |  6. Init    |  7. Add remote"
     echo ""
     echo "Q. Quit"
     echo ""
     echo "Working directory: $LAZYGITDIR"
+#    echo "(C. Change working directory)"
     echo ""
     read -p "Enter option: " -s -n1 LAZYGIT
     case "$LAZYGIT" in
@@ -62,6 +66,17 @@ do
             read -p "Enter URL to your new Github repo: " GITHUBURL
             git remote add origin $GITHUBURL
             echo ""
+            read -p "Press (the infamous) any key to continue... " -n1 -s
+        ;;
+        [cC])
+            clear
+#            echo "Current working directory: $LAZYGITDIR"
+#            read -p "$Enter new full path: " LAZYGITDIR
+#            cd $LAZYGITDIR
+# Uncomment if you use custom path. Remember to comment out above.
+#            read -p "$LAZYGITDEVDIR" LAZYGITDIR
+#            cd $LAZYGITDEVDIR$LAZYGITDIR
+#            echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         [qQ])
