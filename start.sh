@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lazy Git v0.3
+# Lazy Git v0.4
 # Made by Dr. Waldijk
 # Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
