@@ -1,4 +1,4 @@
-# Lazy Git v0.1
+# Lazy Git
 
 A script to simplify git usage and pushing commits to [Github](https://github.com).
 

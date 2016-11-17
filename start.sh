@@ -12,8 +12,8 @@ do
     LAZYGITDIR=$(pwd)
     clear
     echo "Lazy Git v0.3"
-    echo "1. Add     |  2. Commit  |  3. Commit (-a)  |  4. Push"
-    echo "5. Status  |  6. Init    |  7. Add remote"
+    echo "1. Add  |  2. Remove  |  3. Commit  |  4. Commit (-a)"
+    echo "5. Push |  6. Status  |  7. Init    |  8. Add remote"
     echo ""
     echo "Q. Quit"
     echo ""
@@ -24,6 +24,8 @@ do
     case "$LAZYGIT" in
         1)
             clear
+            git status
+            echo ""
             read -p "Enter files you want to add: " GITADD
             git add $GITADD
             echo ""
@@ -31,45 +33,54 @@ do
         ;;
         2)
             clear
-            read -p "Enter comment for your commit: " GITCOMMIT
-            git commit -m "$GITCOMMIT"
+            git status
+            echo ""
+            read -p "Enter files you want to remove: " GITRM
+            git add $GITRM
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         3)
             clear
             read -p "Enter comment for your commit: " GITCOMMIT
-            git commit -a -m "$GITCOMMIT"
+            git commit -m "$GITCOMMIT"
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         4)
             clear
-            git push -u origin master
+            read -p "Enter comment for your commit: " GITCOMMIT
+            git commit -a -m "$GITCOMMIT"
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         5)
             clear
-            git status
+            git push -u origin master
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         6)
             clear
-            git init
+            git status
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         7)
+            clear
+            git init
+            echo ""
+            read -p "Press (the infamous) any key to continue... " -n1 -s
+        ;;
+        8)
             clear
             read -p "Enter URL to your new Github repo: " GITHUBURL
             git remote add origin $GITHUBURL
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
-        [cC])
-            clear
+#        [cC])
+#            clear
 #            echo "Current working directory: $LAZYGITDIR"
 #            read -p "$Enter new full path: " LAZYGITDIR
 #            cd $LAZYGITDIR
@@ -77,8 +88,8 @@ do
 #            read -p "$LAZYGITDEVDIR" LAZYGITDIR
 #            cd $LAZYGITDEVDIR$LAZYGITDIR
 #            echo ""
-            read -p "Press (the infamous) any key to continue... " -n1 -s
-        ;;
+#            read -p "Press (the infamous) any key to continue... " -n1 -s
+#        ;;
         [qQ])
             clear
             echo "Lazy Git v0.3"
