@@ -118,7 +118,7 @@ do
                         echo ""
                         ls -1
                         echo ""
-                        read -p "$Enter new full path: " LAZYGITDIR
+                        read -p "Enter directory: " LAZYGITDIR
                         cd $LAZYGITDIR
                     ;;
                     4)
