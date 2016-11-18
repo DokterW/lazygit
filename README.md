@@ -6,4 +6,5 @@ Perfect if you are a lazy git that cannot be bothered to type or remember your m
 
 ### Roadmap
 
-* Add ability to change working directory.
+**2016-11-18**
+* Added ability to change working directory.
