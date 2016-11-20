@@ -1,5 +1,5 @@
 #!/bin/bash
-# LazyGit v1.0
+# LazyGit v1.0.1
 # Made by Dr. Waldijk
 # Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
@@ -12,7 +12,7 @@ then
     echo "alias lazygit='$LAZYGITALIAS/start.sh'" >> ~/.bashrc
 fi
 # -----------------------------------------------------------------------------------
-LAZYGITVER="1.0"
+LAZYGITVER="1.0.1"
 LAZYGITNAM="LazyGit"
 while :
 do
@@ -44,7 +44,7 @@ do
             git status
             echo ""
             read -p "Enter files you want to remove: " GITRM
-            git add $GITRM
+            git rm $GITRM
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
