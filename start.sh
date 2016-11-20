@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lazy Git v0.5
+# LazyGit v1.0
 # Made by Dr. Waldijk
 # Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
@@ -12,12 +12,13 @@ then
     echo "alias lazygit='$LAZYGITALIAS/start.sh'" >> ~/.bashrc
 fi
 # -----------------------------------------------------------------------------------
-LAZYGITVER="0.5"
+LAZYGITVER="1.0"
+LAZYGITNAM="LazyGit"
 while :
 do
     clear
     LAZYGITDIR=$(pwd)
-    echo "Lazy Git v$LAZYGITVER"
+    echo "$LAZYGITNAM v$LAZYGITVER"
     echo ""
     echo "1. Add  |  2. Remove  |  3. Commit  |  4. Commit (-a)"
     echo "5. Push |  6. Status  |  7. Init    |  8. Add remote"
@@ -91,37 +92,40 @@ do
             do
                 clear
                 LAZYGITDIR=$(pwd)
-                echo "Lazy Git v$LAZYGITVER"
+                LAZYGITLS=$(ls -1)
+                echo "$LAZYGITNAM v$LAZYGITVER"
                 echo ""
-                echo "Current working directory: $LAZYGITDIR"
+                echo "$LAZYGITLS" | nl -nrz -w2 -s- | sed 's/-/ /g'
+                echo "[$LAZYGITDIR]"
                 echo ""
-                echo "1. Move down one folder  |  2. List directory"
-                echo "3. Move up one folder (you need to enter it manually)"
-                echo "4. Done"
+                echo "   00. Move down one folder"
+                echo "01-99. Move up one folder"
+                echo "   DD. Done"
                 echo ""
-                read -p "Enter option: " -s -n1 LAZYGIT
+                read -p "Enter option: " -s -n2 LAZYGIT
                 case "$LAZYGIT" in
-                    1)
+                    00)
                         cd ..
                     ;;
-                    2)
-                        clear
-                        echo "Lazy Git v$LAZYGITVER"
-                        echo ""
-                        ls -1
-                        echo ""
-                        read -p "Press (the infamous) any key to continue... " -n1 -s
+                    [0-9]*)
+                        LAZYGITCNT=$(echo "$LAZYGITLS" | wc -l)
+                        if [ "$LAZYGIT" -ge "$LAZYGITCNT" ]
+                        then
+                            clear
+                            echo "$LAZYGITNAM v$LAZYGITVER"
+                            echo ""
+                            echo "No folder with that number, Butterfingers!"
+                            sleep 1s
+                        else
+                            if [ "$LAZYGIT" = 0[1-9] ]
+                            then
+                                LAZYGIT=$(echo $LAZYGIT | cut -c 2)
+                            fi
+                            LAZYGITDIR=$(echo "$LAZYGITLS" | sed "$LAZYGIT!d")
+                            cd $LAZYGITDIR
+                        fi
                     ;;
-                    3)
-                        clear
-                        echo "Lazy Git v$LAZYGITVER"
-                        echo ""
-                        ls -1
-                        echo ""
-                        read -p "Enter directory: " LAZYGITDIR
-                        cd $LAZYGITDIR
-                    ;;
-                    4)
+                    dd|DD)
                         break
                     ;;
                 esac
@@ -129,7 +133,7 @@ do
         ;;
         [qQ])
             clear
-            echo "Lazy Git v$LAZYGITVER"
+            echo "$LAZYGITNAM v$LAZYGITVER"
             echo "Bye!"
             break
         ;;
