@@ -1,21 +1,19 @@
 #!/bin/bash
-# LazyGit v1.0.1
+# LazyGit v1.0.2
 # Made by Dr. Waldijk
 # Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # Alias -----------------------------------------------------------------------------
 LAZYGITALIAS=$(cat ~/.bashrc | grep -o lazygit)
-if [ $LAZYGITALIAS != "lazygit" ]
-then
+if [ $LAZYGITALIAS != "lazygit" ]; then
     LAZYGITALIAS=$(pwd)
     echo "alias lazygit='$LAZYGITALIAS/start.sh'" >> ~/.bashrc
 fi
 # -----------------------------------------------------------------------------------
-LAZYGITVER="1.0.1"
+LAZYGITVER="1.0.2"
 LAZYGITNAM="LazyGit"
-while :
-do
+while :; do
     clear
     LAZYGITDIR=$(pwd)
     echo "$LAZYGITNAM v$LAZYGITVER"
@@ -88,8 +86,7 @@ do
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
         [cC])
-            while :
-            do
+            while :; do
                 clear
                 LAZYGITDIR=$(pwd)
                 LAZYGITLS=$(ls -1)
@@ -107,21 +104,20 @@ do
                     00)
                         cd ..
                     ;;
-                    [0-9]*)
+                    [0-9][0-9])
                         LAZYGITCNT=$(echo "$LAZYGITLS" | wc -l)
-                        if [ "$LAZYGIT" -ge "$LAZYGITCNT" ]
-                        then
+                        #if [ "$LAZYGIT" = "[0][1-9]" ]; then
+                        #    LAZYGIT=$(echo $LAZYGIT | cut -c 2)
+                        #fi
+                        if [ "$LAZYGIT" -gt "$LAZYGITCNT" ]; then
                             clear
                             echo "$LAZYGITNAM v$LAZYGITVER"
                             echo ""
                             echo "No folder with that number, Butterfingers!"
                             sleep 1s
                         else
-                            if [ "$LAZYGIT" = 0[1-9] ]
-                            then
-                                LAZYGIT=$(echo $LAZYGIT | cut -c 2)
-                            fi
-                            LAZYGITDIR=$(echo "$LAZYGITLS" | sed "$LAZYGIT!d")
+                            clear
+                            LAZYGITDIR=$(echo "$LAZYGITLS" | sed -n "$LAZYGIT p")
                             cd $LAZYGITDIR
                         fi
                     ;;
@@ -133,8 +129,6 @@ do
         ;;
         [qQ])
             clear
-            echo "$LAZYGITNAM v$LAZYGITVER"
-            echo "Bye!"
             break
         ;;
         *)
