@@ -1,18 +1,13 @@
 #!/bin/bash
-# LazyGit v1.0.2
+# LazyGit v1.2
 # Made by Dr. Waldijk
 # Just press a few buttons to get your git on and pushed to Github.
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
-# Alias -----------------------------------------------------------------------------
-LAZYGITALIAS=$(cat ~/.bashrc | grep -o lazygit)
-if [ $LAZYGITALIAS != "lazygit" ]; then
-    LAZYGITALIAS=$(pwd)
-    echo "alias lazygit='$LAZYGITALIAS/start.sh'" >> ~/.bashrc
-fi
-# -----------------------------------------------------------------------------------
-LAZYGITVER="1.0.2"
+# Config ----------------------------------------------------------------------------
+LAZYGITVER="1.2"
 LAZYGITNAM="LazyGit"
+# -----------------------------------------------------------------------------------
 while :; do
     clear
     LAZYGITDIR=$(pwd)
