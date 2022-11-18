@@ -57,7 +57,7 @@ while :; do
         ;;
         5)
             clear
-            git push -u origin master
+            git push -u origin main
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
