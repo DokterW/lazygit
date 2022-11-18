@@ -15,6 +15,7 @@ while :; do
     echo ""
     echo "1. Add  |  2. Remove  |  3. Commit  |  4. Commit (-a)"
     echo "5. Push |  6. Status  |  7. Init    |  8. Add remote"
+    echo "9. Fix branch"
     echo ""
     echo "Q. Quit"
     echo ""
@@ -77,6 +78,13 @@ while :; do
             clear
             read -p "Enter URL to your new Github repo: " GITHUBURL
             git remote add origin $GITHUBURL
+            git branch -M main
+            echo ""
+            read -p "Press (the infamous) any key to continue... " -n1 -s
+        ;;
+        9)
+            clear
+            git branch -M main
             echo ""
             read -p "Press (the infamous) any key to continue... " -n1 -s
         ;;
